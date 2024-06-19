@@ -94,6 +94,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\EmeraldCore\Platform\OpenGL\GLWindow.h" />
     <ClInclude Include="src\EmeraldCore\Events\ApplicationEvent.h" />
     <ClInclude Include="src\EmeraldCore\Events\Event.h" />
     <ClInclude Include="src\EmeraldCore\Events\KeyEvent.h" />
@@ -105,9 +106,11 @@
     <ClInclude Include="src\EmeraldCore\EntryPoint.h" />
     <ClInclude Include="src\EmeraldCore\Util\KeyCodes.h" />
     <ClInclude Include="src\EmeraldCore\Util\MouseCodes.h" />
+    <ClInclude Include="src\EmeraldCore\Window.h" />
     <ClInclude Include="src\emeraldpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\EmeraldCore\Platform\OpenGL\GLWindow.cpp" />
     <ClCompile Include="src\EmeraldCore\Logger.cpp" />
     <ClCompile Include="src\EmeraldCore\Application.cpp" />
     <ClCompile Include="src\emeraldpch.cpp">
