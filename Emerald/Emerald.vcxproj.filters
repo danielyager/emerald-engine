@@ -57,6 +57,12 @@
     <ClInclude Include="src\EmeraldCore\Platform\OpenGL\GLWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\EmeraldCore\Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EmeraldCore\Platform\WindowsInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EmeraldCore\Application.cpp">
@@ -74,5 +80,11 @@
     <ClCompile Include="src\EmeraldCore\Platform\OpenGL\GLWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\EmeraldCore\Platform\WindowsInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 #pragma once
 #include "Core.h"
+#include "EmeraldCore/Platform/OpenGL/GLWindow.h"
 
 namespace Emerald {
 
@@ -10,6 +11,11 @@ namespace Emerald {
 		virtual ~Application();
 
 		void Run();
+
+	private:
+		static Application* s_Instance;
+
+		GLWindow* m_Window;
 	};
 
 	// To be defined in Client.

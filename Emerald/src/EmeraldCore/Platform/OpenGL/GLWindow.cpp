@@ -5,6 +5,8 @@ namespace Emerald {
 
 	void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
+	GLWindow::GLWindow() { m_GLFWwindow = nullptr; }
+
 	GLWindow::GLWindow(const unsigned int width, const unsigned int height, const std::string title) {
 		Initialize(width, height, title);
 	}
@@ -29,16 +31,18 @@ namespace Emerald {
 	}
 
 	bool GLWindow::ShouldClose() {
-		if (!m_Window) {
+		if (!m_GLFWwindow) {
 			LOG_ERROR(0, "Window in GLWindow is NULL!");
 			return true;
 		}
-		return glfwWindowShouldClose(m_Window);
+		//LOG_TRACE(0, "Window in GLWindow should close now!");
+		return glfwWindowShouldClose(m_GLFWwindow);
 	}
 
 	void GLWindow::ProcessInput() {
-		if (glfwGetKey(m_Window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-			glfwSetWindowShouldClose(m_Window, true);
+		if (glfwGetKey(m_GLFWwindow, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+			glfwSetWindowShouldClose(m_GLFWwindow, true);
+		}
 	}
 
 	void GLWindow::RunRenderTest() {
@@ -47,8 +51,12 @@ namespace Emerald {
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// Check and call events and swap the buffers
-		glfwSwapBuffers(m_Window);
+		glfwSwapBuffers(m_GLFWwindow);
 		glfwPollEvents();
+	}
+
+	void* GLWindow::GetNativeWindow() const {
+		return m_GLFWwindow;
 	}
 
 	void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
@@ -66,16 +74,18 @@ namespace Emerald {
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-		m_Window = glfwCreateWindow(m_Width, m_Height, m_Title.c_str(), nullptr, nullptr);
-		if (!m_Window) {
+		//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);    // For MAC OS only
+
+		m_GLFWwindow = glfwCreateWindow(m_Width, m_Height, m_Title.c_str(), nullptr, nullptr);
+
+		if (!m_GLFWwindow) {
 			LOG_ERROR(0, "Failed to create OpenGL Window. Window is NULL!");
 			glfwTerminate();
 			return;
 		}
-		glfwMakeContextCurrent(m_Window);
-		glfwSetFramebufferSizeCallback(m_Window, framebuffer_size_callback);
+		glfwMakeContextCurrent(m_GLFWwindow);
+		glfwSetFramebufferSizeCallback(m_GLFWwindow, framebuffer_size_callback);
 
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 			LOG_ERROR(0, "Failed to initialize GLAD.");
@@ -83,7 +93,7 @@ namespace Emerald {
 		}
 
 		glViewport(0, 0, m_Width, m_Height);
-		LOG_SUCCESS(0, "Successfully initialized the OpenGL window!");
+		LOG_SUCCESS(0, "Successfully initialized the OpenGL window! Size = [{0} x {1}]", m_Width, m_Height);
 	}
 
 }

@@ -94,6 +94,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\EmeraldCore\Input.h" />
     <ClInclude Include="src\EmeraldCore\Platform\OpenGL\GLWindow.h" />
     <ClInclude Include="src\EmeraldCore\Events\ApplicationEvent.h" />
     <ClInclude Include="src\EmeraldCore\Events\Event.h" />
@@ -104,6 +105,7 @@
     <ClInclude Include="src\EmeraldCore\Application.h" />
     <ClInclude Include="src\EmeraldCore\Core.h" />
     <ClInclude Include="src\EmeraldCore\EntryPoint.h" />
+    <ClInclude Include="src\EmeraldCore\Platform\WindowsInput.h" />
     <ClInclude Include="src\EmeraldCore\Util\KeyCodes.h" />
     <ClInclude Include="src\EmeraldCore\Util\MouseCodes.h" />
     <ClInclude Include="src\EmeraldCore\Window.h" />
@@ -113,6 +115,7 @@
     <ClCompile Include="src\EmeraldCore\Platform\OpenGL\GLWindow.cpp" />
     <ClCompile Include="src\EmeraldCore\Logger.cpp" />
     <ClCompile Include="src\EmeraldCore\Application.cpp" />
+    <ClCompile Include="src\EmeraldCore\Platform\WindowsInput.cpp" />
     <ClCompile Include="src\emeraldpch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -126,7 +129,17 @@
       </PrecompiledHeaderFile>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\Microsoft.GameInput.0.2303.22621.3038\build\native\targets\Microsoft.GameInput.targets" Condition="Exists('..\packages\Microsoft.GameInput.0.2303.22621.3038\build\native\targets\Microsoft.GameInput.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.GameInput.0.2303.22621.3038\build\native\targets\Microsoft.GameInput.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.GameInput.0.2303.22621.3038\build\native\targets\Microsoft.GameInput.targets'))" />
+  </Target>
 </Project>
