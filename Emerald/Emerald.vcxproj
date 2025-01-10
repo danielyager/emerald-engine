@@ -61,7 +61,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir)Emerald\thirdParty\spdlog\include;src;$(SolutionDir)Emerald\thirdParty\glfw\include;$(SolutionDir)Emerald\thirdParty\libs;$(SolutionDir)Emerald\thirdParty\glad\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Emerald\thirdParty\spdlog\include;src;$(SolutionDir)Emerald\thirdParty\glfw\include;$(SolutionDir)Emerald\thirdParty\libs;$(SolutionDir)Emerald\thirdParty\glad\include;$(SolutionDir)Emerald\thirdParty\imgui;</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>emeraldpch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -81,7 +81,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir)Emerald\thirdParty\spdlog\include;src;$(SolutionDir)Emerald\thirdParty\glfw\include;$(SolutionDir)Emerald\thirdParty\libs;$(SolutionDir)Emerald\thirdParty\glad\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Emerald\thirdParty\spdlog\include;src;$(SolutionDir)Emerald\thirdParty\glfw\include;$(SolutionDir)Emerald\thirdParty\libs;$(SolutionDir)Emerald\thirdParty\glad\include;$(SolutionDir)Emerald\thirdParty\imgui;</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>emeraldpch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -94,6 +94,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\EmeraldCore\Managers\InputManager.h" />
+    <ClInclude Include="src\EmeraldCore\Layer.h" />
+    <ClInclude Include="src\EmeraldCore\LayerStack.h" />
+    <ClInclude Include="src\EmeraldCore\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\EmeraldCore\Input.h" />
     <ClInclude Include="src\EmeraldCore\Platform\OpenGL\GLWindow.h" />
     <ClInclude Include="src\EmeraldCore\Events\ApplicationEvent.h" />
@@ -112,6 +116,10 @@
     <ClInclude Include="src\emeraldpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\EmeraldCore\Managers\InputManager.cpp" />
+    <ClCompile Include="src\EmeraldCore\Layer.cpp" />
+    <ClCompile Include="src\EmeraldCore\LayerStack.cpp" />
+    <ClCompile Include="src\EmeraldCore\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\EmeraldCore\Platform\OpenGL\GLWindow.cpp" />
     <ClCompile Include="src\EmeraldCore\Logger.cpp" />
     <ClCompile Include="src\EmeraldCore\Application.cpp" />

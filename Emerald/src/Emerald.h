@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include "EmeraldCore/Application.h"
 #include "EmeraldCore/Logger.h"
+#include "EmeraldCore/Layer.h"
 
 
 // ------------Inputs------------

@@ -32,10 +32,10 @@ namespace Emerald {
 
 	bool GLWindow::ShouldClose() {
 		if (!m_GLFWwindow) {
-			LOG_ERROR(0, "Window in GLWindow is NULL!");
+			LOG_ERROR("Window in GLWindow is NULL!");
 			return true;
 		}
-		//LOG_TRACE(0, "Window in GLWindow should close now!");
+		//LOG_TRACE("Window in GLWindow should close now!");
 		return glfwWindowShouldClose(m_GLFWwindow);
 	}
 
@@ -80,7 +80,7 @@ namespace Emerald {
 		m_GLFWwindow = glfwCreateWindow(m_Width, m_Height, m_Title.c_str(), nullptr, nullptr);
 
 		if (!m_GLFWwindow) {
-			LOG_ERROR(0, "Failed to create OpenGL Window. Window is NULL!");
+			LOG_ERROR("Failed to create OpenGL Window. Window is NULL!");
 			glfwTerminate();
 			return;
 		}
@@ -88,12 +88,12 @@ namespace Emerald {
 		glfwSetFramebufferSizeCallback(m_GLFWwindow, framebuffer_size_callback);
 
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-			LOG_ERROR(0, "Failed to initialize GLAD.");
+			LOG_ERROR("Failed to initialize GLAD.");
 			return;
 		}
 
 		glViewport(0, 0, m_Width, m_Height);
-		LOG_SUCCESS(0, "Successfully initialized the OpenGL window! Size = [{0} x {1}]", m_Width, m_Height);
+		LOG_SUCCESS("Successfully initialized the OpenGL window! Size = [{0} x {1}]", m_Width, m_Height);
 	}
 
 }

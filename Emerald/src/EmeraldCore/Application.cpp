@@ -7,32 +7,57 @@
 
 namespace Emerald {
 
+	Application* Application::s_Instance = nullptr;
+
 	Application::Application() {
-		m_Window = nullptr;
+		s_Instance = this;
+		m_Window = std::make_unique<GLWindow>(800, 600, "Testing out the window class!");
+		g_InputManager = &InputManager::StartUp();
 	}
 
 	Application::~Application() {}
 
-	void Application::Run() {
-		GLWindow win = GLWindow(800, 600, "Testing out the window class!");
-		m_Window = &win;
-		WindowsInput input = WindowsInput(static_cast<GLFWwindow*>(m_Window->GetNativeWindow()));
+	Application& Application::Get() {
+		return *s_Instance;
+	}
 
+	GLWindow& Application::GetWindow() {
+		return *m_Window;
+	}
+
+	void Application::Run() {
 		if (!m_Window) {
-			LOG_ERROR(0, "Our GL Window is null!");
+			LOG_ERROR("Our GL Window is null!");
+		}
+		if (!g_InputManager) {
+			LOG_ERROR("g_InputManager is NULL in Application Run!");
 		}
 
 		while (m_Window && !m_Window->ShouldClose()) {
+			m_LayerStack.UpdateLayersAndOverlays();
+
 			m_Window->ProcessInput();
 			m_Window->RunRenderTest();
 
-			if (input.IsKeyPressed(Key::A)) {
-				LOG_TRACE(0, "We're pressing the \"A\" key!");
+			if (g_InputManager) {
+				g_InputManager->ProcessInput();
 			}
-
-			//std::pair<float, float> mousePosition = input.GetMousePosition();
-			//LOG_TRACE(0, "Current Mouse Position: {0}, {1}", mousePosition.first, mousePosition.second);
 		}
+		g_InputManager->ShutDown();
 		m_Window->Shutdown();
+	}
+
+	void Application::OnEvent(Event& e) {
+		// Lots of work to do here! Let's revisit this later.
+	}
+
+
+	void Application::PushLayer(Layer* layer) {
+		m_LayerStack.PushLayer(layer);
+	}
+
+
+	void Application::PushOverlay(Layer* layer) {
+		m_LayerStack.PushOverlay(layer);
 	}
 }

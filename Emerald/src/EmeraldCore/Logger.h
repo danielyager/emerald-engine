@@ -26,7 +26,10 @@ namespace Emerald {
 		static void SetVerbosity(Verbosity newVerbosity);
 
 		template<typename T, typename... Args>
-		static void Log(int logType, int channel, T message, Args... args);
+		static void Log(int logType, T message, Args... args);
+
+		template<typename T, typename... Args>
+		static void LogWithChannel(int logType, int channel, T message, Args... args);
 
 	private:
 		static std::shared_ptr<spdlog::logger> s_ELogger;
@@ -34,7 +37,7 @@ namespace Emerald {
 	};
 
 	template<typename T, typename ...Args>
-	inline void Logger::Log(int logType, int channel, T message, Args ...args) {
+	inline void Logger::Log(int logType, T message, Args ...args) {
 		std::string newMessage = "";
 		if (logType == 0) {
 			s_ELogger->trace(newMessage + "[TRACE]  " + message, args...);
@@ -44,6 +47,24 @@ namespace Emerald {
 			s_ELogger->warn(newMessage + "[WARN]  " + message, args...);
 		} else if (logType == 4) {
 			s_ELogger->error(newMessage + "[ERROR]  " + message, args...);
+		}
+	}
+
+	template<typename T, typename ...Args>
+	inline void Logger::LogWithChannel(int logType, int channel, T message, Args ...args) {
+		std::string newMessage = "";
+		std::string channelName = "[TempChannel]";
+
+		// TODO: Add mapping logic from number value to channel name.
+
+		if (logType == 0) {
+			s_ELogger->trace(newMessage + "[TRACE]  " + channelName + message, args...);
+		} else if (logType == 2) {
+			s_ELogger->info(newMessage + "[SUCCESS]  " + channelName + message, args...);
+		} else if (logType == 3) {
+			s_ELogger->warn(newMessage + "[WARN]  " + channelName + message, args...);
+		} else if (logType == 4) {
+			s_ELogger->error(newMessage + "[ERROR]  " + channelName + message, args...);
 		}
 	}
 

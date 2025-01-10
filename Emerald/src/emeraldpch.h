@@ -14,6 +14,7 @@
 #include "EmeraldCore/Logger.h"
 
 // Rendering and Windowing includes
+#define GLFW_INCLUDE_NONE
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
