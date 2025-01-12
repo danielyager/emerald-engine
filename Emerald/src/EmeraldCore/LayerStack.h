@@ -16,6 +16,7 @@ namespace Emerald {
 		void PopOverlay();
 
 		void UpdateLayersAndOverlays();
+		void DetachLayersAndOverlays();
 
 		//inline std::vector<Layer*>::iterator begin() { return m_Layers.begin(); }
 		//inline std::vector<Layer*>::iterator end() { return m_Layers.end(); }

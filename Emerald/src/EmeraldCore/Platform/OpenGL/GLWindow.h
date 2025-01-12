@@ -19,6 +19,8 @@ namespace Emerald {
 
 		void ProcessInput();
 
+		void ClearBuffer();
+		void SwapBuffer();
 		void RunRenderTest();
 
 		virtual void* GetNativeWindow() const;

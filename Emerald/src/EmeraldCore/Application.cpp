@@ -11,7 +11,7 @@ namespace Emerald {
 
 	Application::Application() {
 		s_Instance = this;
-		m_Window = std::make_unique<GLWindow>(800, 600, "Testing out the window class!");
+		m_Window = std::make_unique<GLWindow>(800, 600, "Emerald Engine");
 		g_InputManager = &InputManager::StartUp();
 	}
 
@@ -33,16 +33,20 @@ namespace Emerald {
 			LOG_ERROR("g_InputManager is NULL in Application Run!");
 		}
 
-		while (m_Window && !m_Window->ShouldClose()) {
-			m_LayerStack.UpdateLayersAndOverlays();
 
+		while (m_Window && !m_Window->ShouldClose()) {
 			m_Window->ProcessInput();
-			m_Window->RunRenderTest();
+
+			m_Window->ClearBuffer();
+			m_LayerStack.UpdateLayersAndOverlays();
+			m_Window->SwapBuffer();
 
 			if (g_InputManager) {
 				g_InputManager->ProcessInput();
 			}
 		}
+
+		m_LayerStack.DetachLayersAndOverlays();
 		g_InputManager->ShutDown();
 		m_Window->Shutdown();
 	}

@@ -6,6 +6,7 @@
 #include "EmeraldCore/Application.h"
 #include "EmeraldCore/Logger.h"
 #include "EmeraldCore/Layer.h"
+#include "EmeraldCore/ImGui/ImGuiLayer.h"
 
 
 // ------------Inputs------------

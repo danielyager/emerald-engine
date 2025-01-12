@@ -16,10 +16,13 @@ namespace Emerald {
 
 	void LayerStack::PushLayer(Layer* layer) {
 		m_Layers.emplace_back(layer);
+		layer->OnAttach();
+		LOG_TRACE("We are pushing a new layer to the layer stack! [Layer Name: {0}]", layer->GetName());
 	}
 
 	void LayerStack::PushOverlay(Layer* layer) {
 		m_Overlays.emplace_back(layer);
+		layer->OnAttach();
 	}
 
 	void LayerStack::PopLayer() {
@@ -37,6 +40,19 @@ namespace Emerald {
 		for (Layer* layer : m_Overlays) {
 			layer->OnUpdate();
 		}
+	}
+
+	void LayerStack::DetachLayersAndOverlays() {
+		for (Layer* layer : m_Layers) {
+			LOG_WARN("Detaching Layer from stack. Layer Name: [{0}]", layer->GetName());
+			layer->OnDetach();
+		}
+		for (Layer* layer : m_Overlays) {
+			LOG_WARN("Detaching Overlay from stack. Overlay Name: [{0}]", layer->GetName());
+			layer->OnDetach();
+		}
+		m_Layers.clear();
+		m_Overlays.clear();
 	}
 
 }

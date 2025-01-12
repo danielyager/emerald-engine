@@ -1,5 +1,8 @@
 #include "emeraldpch.h"
 #include "GLWindow.h"
+#include "imgui.h"
+#include "backends/imgui_impl_glfw.h"
+#include "backends/imgui_impl_opengl3.h"
 
 namespace Emerald {
 
@@ -40,16 +43,22 @@ namespace Emerald {
 	}
 
 	void GLWindow::ProcessInput() {
+		glfwPollEvents();
 		if (glfwGetKey(m_GLFWwindow, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 			glfwSetWindowShouldClose(m_GLFWwindow, true);
 		}
 	}
 
-	void GLWindow::RunRenderTest() {
-		// Rendering commands
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	void GLWindow::ClearBuffer() {
 		glClear(GL_COLOR_BUFFER_BIT);
+	}
 
+	void GLWindow::SwapBuffer() {
+		glfwSwapBuffers(m_GLFWwindow);
+
+	}
+
+	void GLWindow::RunRenderTest() {
 		// Check and call events and swap the buffers
 		glfwSwapBuffers(m_GLFWwindow);
 		glfwPollEvents();
@@ -94,6 +103,7 @@ namespace Emerald {
 
 		glViewport(0, 0, m_Width, m_Height);
 		LOG_SUCCESS("Successfully initialized the OpenGL window! Size = [{0} x {1}]", m_Width, m_Height);
+		glfwGetWindowUserPointer(m_GLFWwindow);
 	}
 
 }
