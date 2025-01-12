@@ -19,6 +19,12 @@
     <Filter Include="Source Files\imgui">
       <UniqueIdentifier>{7aac2d5b-424b-4b07-9f7b-941dac400f46}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\glad">
+      <UniqueIdentifier>{388311b4-1fc1-47d5-b130-75b929c7ea6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\glad">
+      <UniqueIdentifier>{17d992a3-a42f-4144-bece-cd0c28544e36}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\EmeraldCore\Core.h">
@@ -119,9 +125,6 @@
     <ClCompile Include="src\emeraldpch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\glad.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\EmeraldCore\Platform\OpenGL\GLWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -160,6 +163,9 @@
     </ClCompile>
     <ClCompile Include="thirdParty\imgui\backends\imgui_impl_glfw.cpp">
       <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ThirdPartyBuilds.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
