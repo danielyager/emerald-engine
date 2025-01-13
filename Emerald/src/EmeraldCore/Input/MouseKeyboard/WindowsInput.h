@@ -1,6 +1,6 @@
 #pragma once
 
-#include "EmeraldCore/Input.h"
+#include "EmeraldCore/Input/Input.h"
 #include <GLFW/glfw3.h>
 
 namespace Emerald {

@@ -98,18 +98,18 @@
     <ClInclude Include="src\EmeraldCore\Layer.h" />
     <ClInclude Include="src\EmeraldCore\LayerStack.h" />
     <ClInclude Include="src\EmeraldCore\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\EmeraldCore\Input.h" />
+    <ClInclude Include="src\EmeraldCore\Input\Input.h" />
     <ClInclude Include="src\EmeraldCore\Platform\OpenGL\GLWindow.h" />
     <ClInclude Include="src\EmeraldCore\Events\ApplicationEvent.h" />
     <ClInclude Include="src\EmeraldCore\Events\Event.h" />
     <ClInclude Include="src\EmeraldCore\Events\KeyEvent.h" />
     <ClInclude Include="src\EmeraldCore\Events\MouseEvent.h" />
-    <ClInclude Include="src\EmeraldCore\Logger.h" />
+    <ClInclude Include="src\EmeraldCore\Util\Logger.h" />
     <ClInclude Include="src\Emerald.h" />
     <ClInclude Include="src\EmeraldCore\Application.h" />
     <ClInclude Include="src\EmeraldCore\Core.h" />
     <ClInclude Include="src\EmeraldCore\EntryPoint.h" />
-    <ClInclude Include="src\EmeraldCore\Platform\WindowsInput.h" />
+    <ClInclude Include="src\EmeraldCore\Input\MouseKeyboard\WindowsInput.h" />
     <ClInclude Include="src\EmeraldCore\Util\KeyCodes.h" />
     <ClInclude Include="src\EmeraldCore\Util\MouseCodes.h" />
     <ClInclude Include="src\EmeraldCore\Window.h" />
@@ -123,6 +123,7 @@
     <ClInclude Include="thirdParty\imgui\imstb_rectpack.h" />
     <ClInclude Include="thirdParty\imgui\imstb_textedit.h" />
     <ClInclude Include="thirdParty\imgui\imstb_truetype.h" />
+    <ClInclude Include="src\EmeraldCore\Math\Vector3.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EmeraldCore\Managers\InputManager.cpp" />
@@ -130,9 +131,9 @@
     <ClCompile Include="src\EmeraldCore\LayerStack.cpp" />
     <ClCompile Include="src\EmeraldCore\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\EmeraldCore\Platform\OpenGL\GLWindow.cpp" />
-    <ClCompile Include="src\EmeraldCore\Logger.cpp" />
+    <ClCompile Include="src\EmeraldCore\Util\Logger.cpp" />
     <ClCompile Include="src\EmeraldCore\Application.cpp" />
-    <ClCompile Include="src\EmeraldCore\Platform\WindowsInput.cpp" />
+    <ClCompile Include="src\EmeraldCore\Input\MouseKeyboard\WindowsInput.cpp" />
     <ClCompile Include="src\emeraldpch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -145,6 +146,7 @@
     <ClCompile Include="thirdParty\imgui\imgui_draw.cpp" />
     <ClCompile Include="thirdParty\imgui\imgui_tables.cpp" />
     <ClCompile Include="thirdParty\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\EmeraldCore\Math\Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

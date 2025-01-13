@@ -1,6 +1,6 @@
 #pragma once
 
-#include "EmeraldCore/Platform/WindowsInput.h"
+#include "EmeraldCore/Input/MouseKeyboard/WindowsInput.h"
 
 namespace Emerald {
 

@@ -2,8 +2,6 @@
 #include "Application.h"
 #include "Events/ApplicationEvent.h"
 #include "EmeraldCore/Platform/OpenGL/GLWindow.h"
-#include "EmeraldCore/Platform/WindowsInput.h"
-#include "EmeraldCore/Util/KeyCodes.h"
 
 namespace Emerald {
 

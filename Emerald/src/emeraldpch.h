@@ -11,7 +11,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "EmeraldCore/Logger.h"
+#include "EmeraldCore/Util/Logger.h"
 
 // Rendering and Windowing includes
 #define GLFW_INCLUDE_NONE
