@@ -124,6 +124,8 @@
     <ClInclude Include="thirdParty\imgui\imstb_textedit.h" />
     <ClInclude Include="thirdParty\imgui\imstb_truetype.h" />
     <ClInclude Include="src\EmeraldCore\Math\Vector3.h" />
+    <ClInclude Include="src\EmeraldCore\Math\Vector2.h" />
+    <ClInclude Include="src\EmeraldCore\Math\Vector4.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EmeraldCore\Managers\InputManager.cpp" />
@@ -147,6 +149,8 @@
     <ClCompile Include="thirdParty\imgui\imgui_tables.cpp" />
     <ClCompile Include="thirdParty\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\EmeraldCore\Math\Vector3.cpp" />
+    <ClCompile Include="src\EmeraldCore\Math\Vector2.cpp" />
+    <ClCompile Include="src\EmeraldCore\Math\Vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
