@@ -16,6 +16,7 @@
     <ProjectGuid>{73f1106e-5895-41b0-8af6-1dbc5f18e3c2}</ProjectGuid>
     <RootNamespace>AppSandbox</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>AppSandbox</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">

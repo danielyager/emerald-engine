@@ -36,15 +36,19 @@ namespace Emerald {
 			m_Window->ProcessInput();
 
 			m_Window->ClearBuffer();
-			m_LayerStack.UpdateLayersAndOverlays();
+			m_Window->RunRenderTest(); // Delete this later.
 			m_Window->SwapBuffer();
+
+			//m_Window->ClearBuffer();
+			//m_LayerStack.UpdateLayersAndOverlays();
+			//m_Window->SwapBuffer();
 
 			if (g_InputManager) {
 				g_InputManager->ProcessInput();
 			}
 		}
 
-		m_LayerStack.DetachLayersAndOverlays();
+		//m_LayerStack.DetachLayersAndOverlays();
 		g_InputManager->ShutDown();
 		m_Window->Shutdown();
 	}

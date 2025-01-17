@@ -16,6 +16,7 @@
     <ProjectGuid>{ca6fac1d-1640-4974-86bd-deb290f16e38}</ProjectGuid>
     <RootNamespace>Emerald</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Emerald</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
