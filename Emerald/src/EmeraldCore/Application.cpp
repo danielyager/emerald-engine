@@ -9,7 +9,7 @@ namespace Emerald {
 
 	Application::Application() {
 		s_Instance = this;
-		m_Window = std::make_unique<GLWindow>(1600, 850, "Emerald Engine");
+		m_Window = std::make_unique<GLWindow>(1100, 850, "Emerald Engine");
 		g_InputManager = &InputManager::StartUp();
 	}
 

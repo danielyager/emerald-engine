@@ -188,5 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="src\EmeraldCore\Rendering\OpenGL\GLSL\Practice.vert" />
+    <None Include="src\EmeraldCore\Rendering\OpenGL\GLSL\Practice.frag" />
   </ItemGroup>
 </Project>
