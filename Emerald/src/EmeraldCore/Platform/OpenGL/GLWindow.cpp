@@ -3,25 +3,10 @@
 #include "imgui.h"
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
+#include "EmeraldCore/Rendering/OpenGL/Shader.h"
+#include <filesystem>
 
 namespace Emerald {
-
-	const char* vertexShaderSource = "#version 430 core\n"
-		"layout (location = 0) in vec3 aPos;\n"
-		"layout (location = 1) in vec3 aColor;\n"
-		"out vec3 ourColor;\n"
-		"void main()\n"
-		"{\n"
-		"   gl_Position = vec4(aPos, 1.0);\n"
-		"	ourColor = aColor;\n"
-		"}\0";
-
-	const char* fragmentShaderSource = "#version 430 core\n"
-		"in vec3 ourColor;\n"
-		"out vec4 FragColor;\n"
-		"void main() {\n"
-		"	FragColor = vec4(ourColor, 1.0);\n"
-		"}\0";
 
 	void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
@@ -95,14 +80,6 @@ namespace Emerald {
 			 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
 			 0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // top 
 		};
-		/*
-		float vertices[] = {
-			 0.5f,  0.5f, 0.0f,  // top right
-			 0.5f, -0.5f, 0.0f,  // bottom right
-			-0.5f, -0.5f, 0.0f,  // bottom left
-			-0.5f,  0.5f, 0.0f   // top left 
-		};
-		*/
 		unsigned int indices[] = {  // note that we start from 0!
 			0, 1, 2
 		};
@@ -120,73 +97,12 @@ namespace Emerald {
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-
-		/////////////////////////////////
-		/////// The Vertex Shader ///////
-		/////////////////////////////////
-		unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-		glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-		glCompileShader(vertexShader);
-
-		// Check if there were any errors compiling the shader.
-		int  success;
-		char infoLog[512];
-		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-		if (!success) {
-			glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-			std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-		}
-
-
-		///////////////////////////////////
-		/////// The Fragment Shader ///////
-		///////////////////////////////////
-		unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-		glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-		glCompileShader(fragmentShader);
-
-		// Check if there were any errors compiling the shader.
-		glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-		if (!success) {
-			glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-			std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
-		}
-
-
-		/////////////////////////////////////////////////////
-		/////// Linking Shaders Into a Shader Program ///////
-		/////////////////////////////////////////////////////
-		unsigned int shaderProgram = glCreateProgram();
-		glAttachShader(shaderProgram, vertexShader);
-		glAttachShader(shaderProgram, fragmentShader);
-		glLinkProgram(shaderProgram);
-
-		// Check if there were any errors linking the shader.
-		glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-		if (!success) {
-			glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-			std::cout << "ERROR::SHADER::Linking::COMPILATION_FAILED\n" << infoLog << std::endl;
-		}
-
-
-		//float timeValue = glfwGetTime();
-		//float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
-		//int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
-
-
+		// Compile shaders and create shader program.
+		Shader shaders("Practice.vert", "Practice.frag");
 		// Activate shader program for all shader and rendering calls to use the linked shaders.
-		glUseProgram(shaderProgram);
+		shaders.UseShaderProgram();
 
 
-		// Set the value of the uniform variable in the fragment shader for color value.
-		//glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
-
-
-		// Delete shader objects after linking them into the program object.
-		glDeleteShader(vertexShader);
-		glDeleteShader(fragmentShader);
-
-		
 		//////////////////////////////////////////
 		/////// Create Vertex Array Object ///////
 		//////////////////////////////////////////
@@ -211,7 +127,8 @@ namespace Emerald {
 		///////////////////////////////
 		/////// Draw the Object ///////
 		///////////////////////////////
-		glUseProgram(shaderProgram);
+		//glUseProgram(shaderProgram);
+		shaders.UseShaderProgram();
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);

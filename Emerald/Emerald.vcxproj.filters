@@ -123,6 +123,9 @@
     <ClInclude Include="src\EmeraldCore\Math\Vector4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\EmeraldCore\Rendering\OpenGL\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EmeraldCore\Application.cpp">
@@ -185,10 +188,11 @@
     <ClCompile Include="src\EmeraldCore\Math\Vector4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\EmeraldCore\Rendering\OpenGL\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="src\EmeraldCore\Rendering\OpenGL\GLSL\Practice.vert" />
-    <None Include="src\EmeraldCore\Rendering\OpenGL\GLSL\Practice.frag" />
   </ItemGroup>
 </Project>
